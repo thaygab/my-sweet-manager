@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Painel | My Sweet Manager{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <span class="tag">Dashboard</span>
+        <h2 class="titulo">Visão geral do negócio</h2>
+        <p class="subtitulo">Acompanhe vendas, lucro e desempenho.</p>
+    </div>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <span class="card-label">Total vendido</span>
+        <h3>R$ {{ "%.2f"|format(total_vendido) }}</h3>
+        <p>Valor total das vendas registradas</p>
+    </div>
+
+    <div class="card">
+        <span class="card-label">Lucro</span>
+        <h3>R$ {{ "%.2f"|format(total_lucro) }}</h3>
+        <p>Diferença entre custo e venda</p>
+    </div>
+
+    <div class="card">
+        <span class="card-label">Pedidos</span>
+        <h3>{{ total_pedidos }}</h3>
+        <p>Quantidade de vendas registradas</p>
+    </div>
+
+    <div class="card">
+        <span class="card-label">Produtos</span>
+        <h3>{{ total_produtos }}</h3>
+        <p>Itens cadastrados no sistema</p>
+    </div>
+</div>
+
+<div class="cards cards-secundarios">
+    <div class="card">
+        <span class="card-label">Estoque baixo</span>
+        <h3>{{ estoque_baixo }}</h3>
+        <p>Produtos com até 5 unidades</p>
+    </div>
+
+    <div class="card">
+        <span class="card-label">Ações rápidas</span>
+
+        <div class="acoes">
+            <a class="botao" href="/produtos/novo">Cadastrar produto</a>
+            <a class="botao" href="/pedidos/novo">Registrar venda</a>
+            <a class="botao botao-secundario" href="/produtos">Ver produtos</a>
+            <a class="botao botao-secundario" href="/pedidos">Ver vendas</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

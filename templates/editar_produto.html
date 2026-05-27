@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Produto | My Sweet Manager{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <span class="tag">Edição</span>
+        <h2 class="titulo">Editar produto</h2>
+        <p class="subtitulo">Atualize nome, preços e estoque.</p>
+    </div>
+</div>
+
+<div class="form-box">
+    <form method="POST" class="formulario">
+        <label>Nome do produto</label>
+        <input type="text" name="nome" value="{{ produto.nome }}" required>
+
+        <label>Preço de custo</label>
+        <input type="number" step="0.01" name="preco_custo" value="{{ produto.preco_custo }}" required>
+
+        <label>Preço de venda</label>
+        <input type="number" step="0.01" name="preco_venda" value="{{ produto.preco_venda }}" required>
+
+        <label>Estoque</label>
+        <input type="number" name="estoque" value="{{ produto.estoque }}" required>
+
+        <button type="submit" class="botao">Salvar alterações</button>
+    </form>
+</div>
+{% endblock %}

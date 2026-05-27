@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Vendas{% endblock %}
+{% block page_title %}Histórico de Vendas{% endblock %}
+
+{% block content %}
+<section class="painel-box">
+    <div class="painel-box-header">
+        <div>
+            <h3>Lista de Vendas</h3>
+            <p>Acompanhe todos os pedidos registrados</p>
+        </div>
+
+        <a href="/pedidos/novo" class="botao">+ Nova venda</a>
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço de venda</th>
+                    <th>Total vendido</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pedido in pedidos %}
+                <tr>
+                    <td>{{ pedido.produto_nome }}</td>
+                    <td>{{ pedido.quantidade }}</td>
+                    <td>R$ {{ "%.2f"|format(pedido.preco_venda) }}</td>
+                    <td>R$ {{ "%.2f"|format(pedido.preco_venda * pedido.quantidade) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

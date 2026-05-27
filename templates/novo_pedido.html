@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Nova Venda{% endblock %}
+{% block page_title %}Registrar Venda{% endblock %}
+
+{% block content %}
+<section class="form-section">
+    <div class="form-card">
+        <h3>Nova venda</h3>
+        <p>Selecione o produto e informe a quantidade vendida.</p>
+
+        <form method="POST" class="formulario">
+            <label>Produto</label>
+            <select name="produto_id" required>
+                {% for produto in produtos %}
+                <option value="{{ produto.id }}">
+                    {{ produto.nome }} - Estoque: {{ produto.estoque }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <label>Quantidade</label>
+            <input type="number" name="quantidade" placeholder="Ex: 2" required>
+
+            <button type="submit" class="botao">Salvar venda</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

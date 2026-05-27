@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Sweet Manager{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-badge">MS</div>
+
+            <div class="brand-text">
+                <h1>My Sweet Manager</h1>
+                <p>Controle de vendas</p>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a href="/">Painel</a>
+            <a href="/produtos">Produtos</a>
+            <a href="/produtos/novo">Novo Produto</a>
+            <a href="/pedidos">Vendas</a>
+            <a href="/pedidos/novo">Nova Venda</a>
+        </nav>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="content">
+
+        <!-- ALERTAS -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert-sucesso">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+
+    </main>
+
+</div>
+
+</body>
+</html>
